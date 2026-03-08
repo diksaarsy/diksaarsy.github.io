@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portofolio Saya</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#0b0b0f;
+--card:rgba(255,255,255,0.06);
+--border:rgba(255,255,255,0.1);
+--text:#f5f5f7;
+--muted:#9aa0a6;
+--accent:#0a84ff;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Inter, sans-serif;
+background:black;
+color:var(--text);
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+backdrop-filter:blur(20px);
+background:rgba(0,0,0,0.6);
+border-bottom:1px solid var(--border);
+padding:16px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+z-index:1000;
+}
+
+nav h3{
+font-weight:600;
+}
+
+nav ul{
+list-style:none;
+display:flex;
+gap:25px;
+}
+
+nav a{
+text-decoration:none;
+color:var(--text);
+font-size:14px;
+opacity:.8;
+}
+
+nav a:hover{
+opacity:1;
+}
+
+.menu-btn{
+display:none;
+font-size:24px;
+background:none;
+border:none;
+color:white;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding-top:60px;
+background:linear-gradient(180deg,#000000,#0b0b0f);
+}
+
+.hero img{
+width:170px;
+height:170px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid var(--border);
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:40px;
+font-weight:600;
+}
+
+.hero p{
+color:var(--muted);
+margin-top:10px;
+}
+
+/* SECTION */
+
+section{
+padding:100px 10%;
+}
+
+.section-title{
+font-size:28px;
+margin-bottom:40px;
+text-align:center;
+background:linear-gradient(90deg,#ffffff,#0a84ff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+/* ABOUT */
+
+#about{
+background:linear-gradient(180deg,#0b0b0f,#111118);
+}
+
+.about{
+max-width:700px;
+margin:auto;
+text-align:center;
+color:var(--muted);
+line-height:1.7;
+}
+
+/* SKILLS */
+
+#skills{
+background:linear-gradient(180deg,#111118,#16161f);
+}
+
+.skills{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:20px;
+}
+
+.skill{
+background:var(--card);
+border:1px solid var(--border);
+padding:20px;
+border-radius:16px;
+text-align:center;
+transition:.3s;
+}
+
+.skill:hover{
+transform:translateY(-5px);
+background:rgba(255,255,255,0.1);
+}
+
+/* PROJECTS */
+
+#projects{
+background:linear-gradient(180deg,#16161f,#1b1b26);
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.project{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:18px;
+padding:20px;
+transition:.3s;
+}
+
+.project:hover{
+transform:translateY(-6px);
+background:rgba(255,255,255,0.1);
+}
+
+.project img{
+width:100%;
+height:160px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:15px;
+}
+
+.project h4{
+margin-bottom:10px;
+}
+
+.project p{
+font-size:14px;
+color:var(--muted);
+}
+
+.project-links{
+margin-top:15px;
+display:flex;
+gap:10px;
+}
+
+.project-links a{
+font-size:13px;
+padding:8px 14px;
+border-radius:20px;
+text-decoration:none;
+border:1px solid var(--border);
+color:white;
+}
+
+.project-links a:hover{
+background:var(--accent);
+}
+
+/* CONTACT */
+
+#contact{
+background:linear-gradient(180deg,#1b1b26,#000000);
+}
+
+.contact{
+text-align:center;
+}
+
+.contact a{
+display:inline-block;
+margin:10px;
+padding:12px 22px;
+border-radius:25px;
+border:1px solid var(--border);
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+.contact a:hover{
+background:var(--accent);
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+color:var(--muted);
+border-top:1px solid var(--border);
+background:black;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+nav{
+padding:14px 20px;
+}
+
+.menu-btn{
+display:block;
+}
+
+nav ul{
+position:absolute;
+top:60px;
+right:0;
+background:#0b0b0f;
+flex-direction:column;
+width:200px;
+padding:20px;
+display:none;
+}
+
+nav ul.active{
+display:flex;
+}
+
+.hero h1{
+font-size:28px;
+}
+
+.hero img{
+width:130px;
+height:130px;
+}
+
+section{
+padding:70px 8%;
+}
+
+.section-title{
+font-size:24px;
+}
+
+.projects{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<h3>Portofolio</h3>
+
+<button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+<ul id="menu">
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<img src="image/pp.jpg">
+
+<h1>Diksa Arsy Badrian</h1>
+
+<p>Web Developer • Programmer • Informatika</p>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="section-title">About Me</h2>
+
+<div class="about">
+
+Saya adalah seorang mahasiswa informatika yang memiliki minat pada pengembangan web, desain UI modern, dan teknologi terbaru seperti AI dan data. Saya senang membangun aplikasi yang elegan, cepat, dan mudah digunakan.
+
+</div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<h2 class="section-title">Skills</h2>
+
+<div class="skills">
+
+<div class="skill">HTML</div>
+<div class="skill">CSS</div>
+<div class="skill">JavaScript</div>
+<div class="skill">PHP</div>
+<div class="skill">Python</div>
+<div class="skill">UI Design</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<h2 class="section-title">Projects</h2>
+
+<div class="projects">
+
+<div class="project">
+
+<img src="image/kesehatan.png">
+
+<h4>Website kesehatan</h4>
+
+<p>Aplikasi untuk memanagement data kesehatan, yaitu data pasien, rekam madis pasien, data dokter, sehingga memudah kan pengguna untuk mengelola dan menyimpan data.</p>
+
+<div class="project-links">
+<a href="http://diksa-project.free.nf" target="_blank">Demo</a>
+</div>
+
+</div>
+
+<div class="project">
+
+<img src="project2.jpg">
+
+<h4>Dashboard Mahasiswa</h4>
+
+<p>Sistem dashboard akademik untuk melihat IPK, jadwal, dan data akademik.</p>
+
+<div class="project-links">
+<a href="#">Demo</a>
+<a href="#">GitHub</a>
+</div>
+
+</div>
+
+<div class="project">
+
+<img src="project3.jpg">
+
+<h4>Landing Page Modern</h4>
+
+<p>Landing page modern dengan desain minimalis dan animasi elegan.</p>
+
+<div class="project-links">
+<a href="#">Demo</a>
+<a href="#">GitHub</a>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<h2 class="section-title">Contact</h2>
+
+<div class="contact">
+
+<a href="https://mail.google.com/mail/?view=cm&to=diksaarsibadria@gmail.com" target="_blank">Email</a>
+<a href="https://github.com/diksaarsy" target="_blank">GitHub</a>
+<a href="https://wa.me/6281353656803" target="_blank">WhatsApp</a>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Portofolio Diksa Arsy Badrian
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+</script>
+
+</body>
+</html>
