@@ -1,22 +1,24 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Portofolio Saya</title>
+<title>Portfolio Diksa</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 :root{
---bg:#0b0b0f;
---card:rgba(255,255,255,0.06);
---border:rgba(255,255,255,0.1);
---text:#f5f5f7;
+--bg:#0f0f14;
+--text:#ffffff;
 --muted:#9aa0a6;
---accent:#0a84ff;
+--card:rgba(255,255,255,0.05);
+--border:rgba(255,255,255,0.08);
+--gradient:linear-gradient(135deg,#6a5cff,#00c2ff);
 }
 
 *{
@@ -27,9 +29,38 @@ scroll-behavior:smooth;
 }
 
 body{
-font-family:Inter, sans-serif;
-background:black;
-color:var(--text);
+font-family:Inter;
+background:#0f0f14;
+color:white;
+overflow-x:hidden;
+}
+
+/* background glow */
+
+body::before{
+content:"";
+position:fixed;
+width:600px;
+height:600px;
+background:#6a5cff;
+filter:blur(200px);
+top:-200px;
+left:-200px;
+opacity:.4;
+z-index:-1;
+}
+
+body::after{
+content:"";
+position:fixed;
+width:600px;
+height:600px;
+background:#00c2ff;
+filter:blur(200px);
+bottom:-200px;
+right:-200px;
+opacity:.4;
+z-index:-1;
 }
 
 /* NAVBAR */
@@ -38,44 +69,37 @@ nav{
 position:fixed;
 top:0;
 width:100%;
-backdrop-filter:blur(20px);
-background:rgba(0,0,0,0.6);
-border-bottom:1px solid var(--border);
-padding:16px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+padding:20px 8%;
+background:rgba(10,10,15,0.6);
+backdrop-filter:blur(20px);
+border-bottom:1px solid var(--border);
 z-index:1000;
 }
 
 nav h3{
 font-weight:600;
+background:var(--gradient);
+-webkit-background-clip:text;
+color:transparent;
 }
 
 nav ul{
-list-style:none;
 display:flex;
-gap:25px;
+gap:30px;
+list-style:none;
 }
 
 nav a{
+color:var(--muted);
 text-decoration:none;
-color:var(--text);
 font-size:14px;
-opacity:.8;
 }
 
 nav a:hover{
-opacity:1;
-}
-
-.menu-btn{
-display:none;
-font-size:24px;
-background:none;
-border:none;
 color:white;
-cursor:pointer;
 }
 
 /* HERO */
@@ -87,124 +111,190 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding-top:60px;
-background:linear-gradient(180deg,#000000,#0b0b0f);
+padding:0 20px;
 }
 
-.hero img{
-width:170px;
-height:170px;
+.hero-photo{
+width:190px;
+height:190px;
+border-radius:50%;
+background:var(--gradient);
+padding:5px;
+margin-bottom:30px;
+}
+
+.hero-photo img{
+width:100%;
+height:100%;
 border-radius:50%;
 object-fit:cover;
-border:3px solid var(--border);
-margin-bottom:20px;
 }
 
 .hero h1{
-font-size:40px;
-font-weight:600;
+font-size:52px;
+font-weight:700;
 }
 
-.hero p{
+.hero span{
+background:var(--gradient);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero-role{
+margin-top:8px;
+font-weight:500;
 color:var(--muted);
-margin-top:10px;
+}
+
+.hero-desc{
+max-width:600px;
+margin-top:15px;
+color:var(--muted);
+line-height:1.7;
+}
+
+.hero-buttons{
+margin-top:30px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.btn{
+padding:14px 32px;
+border-radius:30px;
+background:var(--gradient);
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.btn-outline{
+padding:14px 32px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,0.2);
+text-decoration:none;
+color:white;
+}
+
+.btn-outline:hover{
+background:white;
+color:black;
 }
 
 /* SECTION */
 
 section{
-padding:100px 10%;
+padding:120px 10%;
 }
 
 .section-title{
-font-size:28px;
-margin-bottom:40px;
 text-align:center;
-background:linear-gradient(90deg,#ffffff,#0a84ff);
--webkit-background-clip:text;
-color:transparent;
+font-size:36px;
+margin-bottom:70px;
 }
 
 /* ABOUT */
-
-#about{
-background:linear-gradient(180deg,#0b0b0f,#111118);
-}
 
 .about{
 max-width:700px;
 margin:auto;
 text-align:center;
+line-height:1.8;
 color:var(--muted);
-line-height:1.7;
 }
 
-/* SKILLS */
+/* TECH STACK */
 
-#skills{
-background:linear-gradient(180deg,#111118,#16161f);
-}
-
-.skills{
+.tech-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
 gap:20px;
+max-width:800px;
+margin:auto;
 }
 
-.skill{
+.tech{
 background:var(--card);
-border:1px solid var(--border);
 padding:20px;
-border-radius:16px;
+border-radius:15px;
 text-align:center;
+border:1px solid var(--border);
 transition:.3s;
 }
 
-.skill:hover{
+.tech:hover{
 transform:translateY(-5px);
-background:rgba(255,255,255,0.1);
+background:linear-gradient(#1a1a2e,#1a1a2e) padding-box,
+var(--gradient) border-box;
+border:1px solid transparent;
+}
+
+/* FEATURED PROJECT */
+
+.featured{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.featured img{
+width:100%;
+border-radius:20px;
+}
+
+.featured-content{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.featured-content ul{
+margin-top:10px;
+padding-left:18px;
+color:var(--muted);
+}
+
+.featured-content li{
+margin-bottom:5px;
 }
 
 /* PROJECTS */
 
-#projects{
-background:linear-gradient(180deg,#16161f,#1b1b26);
-}
-
 .projects{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
 }
 
 .project{
 background:var(--card);
 border:1px solid var(--border);
-border-radius:18px;
-padding:20px;
-transition:.3s;
+border-radius:20px;
+overflow:hidden;
+transition:.4s;
 }
 
 .project:hover{
-transform:translateY(-6px);
-background:rgba(255,255,255,0.1);
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.4);
 }
 
 .project img{
 width:100%;
-height:160px;
+height:200px;
 object-fit:cover;
-border-radius:12px;
-margin-bottom:15px;
 }
 
-.project h4{
-margin-bottom:10px;
-}
-
-.project p{
-font-size:14px;
-color:var(--muted);
+.project-content{
+padding:20px;
 }
 
 .project-links{
@@ -214,23 +304,32 @@ gap:10px;
 }
 
 .project-links a{
-font-size:13px;
-padding:8px 14px;
+padding:8px 16px;
 border-radius:20px;
+font-size:13px;
 text-decoration:none;
-border:1px solid var(--border);
+background:var(--gradient);
 color:white;
 }
 
-.project-links a:hover{
-background:var(--accent);
+/* EXPERIENCE */
+
+.timeline{
+max-width:700px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.timeline-item{
+background:var(--card);
+padding:20px;
+border-radius:15px;
+border-left:4px solid #6a5cff;
 }
 
 /* CONTACT */
-
-#contact{
-background:linear-gradient(180deg,#1b1b26,#000000);
-}
 
 .contact{
 text-align:center;
@@ -239,95 +338,81 @@ text-align:center;
 .contact a{
 display:inline-block;
 margin:10px;
-padding:12px 22px;
+padding:12px 25px;
 border-radius:25px;
-border:1px solid var(--border);
-text-decoration:none;
+background:var(--gradient);
 color:white;
+text-decoration:none;
 transition:.3s;
 }
 
 .contact a:hover{
-background:var(--accent);
+transform:scale(1.05);
 }
 
 /* FOOTER */
 
 footer{
 text-align:center;
-padding:30px;
+padding:40px;
 color:var(--muted);
-border-top:1px solid var(--border);
-background:black;
+}
+
+/* SCROLL ANIMATION */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
 }
 
 /* MOBILE */
 
 @media(max-width:768px){
 
-nav{
-padding:14px 20px;
-}
-
-.menu-btn{
-display:block;
-}
-
-nav ul{
-position:absolute;
-top:60px;
-right:0;
-background:#0b0b0f;
-flex-direction:column;
-width:200px;
-padding:20px;
-display:none;
-}
-
-nav ul.active{
-display:flex;
-}
-
 .hero h1{
-font-size:28px;
+font-size:36px;
 }
 
-.hero img{
-width:130px;
-height:130px;
+.hero-photo{
+width:140px;
+height:140px;
 }
 
 section{
-padding:70px 8%;
+padding:80px 8%;
 }
 
-.section-title{
-font-size:24px;
+nav ul{
+display:none;
 }
 
-.projects{
+.featured{
 grid-template-columns:1fr;
 }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-
 <nav>
 
-<h3>Portofolio</h3>
+<h3>Diksa</h3>
 
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
-
-<ul id="menu">
+<ul>
 <li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
+<li><a href="#tech">Tech</a></li>
 <li><a href="#projects">Projects</a></li>
+<li><a href="#experience">Experience</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 
@@ -337,42 +422,95 @@ grid-template-columns:1fr;
 
 <section class="hero">
 
+<div class="hero-photo">
 <img src="image/pp.jpg">
+</div>
 
-<h1>Diksa Arsy Badrian</h1>
+<h1>Diksa <span>Arsy Badrian</span></h1>
 
-<p>Web Developer • Programmer • Informatika</p>
+<h3 class="hero-role">Fullstack Web Developer</h3>
 
-</section>
+<p class="hero-desc">
+Mahasiswa informatika yang fokus pada pengembangan aplikasi web modern,
+UI design, dan teknologi seperti AI dan data system.
+</p>
 
-<!-- ABOUT -->
+<div class="hero-buttons">
 
-<section id="about">
+<a href="#projects" class="btn">Lihat Project</a>
 
-<h2 class="section-title">About Me</h2>
-
-<div class="about">
-
-Saya adalah seorang mahasiswa informatika yang memiliki minat pada pengembangan web, desain UI modern, dan teknologi terbaru seperti AI dan data. Saya senang membangun aplikasi yang elegan, cepat, dan mudah digunakan.
+<a href="#contact" class="btn-outline">Hubungi Saya</a>
 
 </div>
 
 </section>
 
-<!-- SKILLS -->
+<!-- ABOUT -->
 
-<section id="skills">
+<section id="about" class="reveal">
 
-<h2 class="section-title">Skills</h2>
+<h2 class="section-title">About Me</h2>
 
-<div class="skills">
+<div class="about">
 
-<div class="skill">HTML</div>
-<div class="skill">CSS</div>
-<div class="skill">JavaScript</div>
-<div class="skill">PHP</div>
-<div class="skill">Python</div>
-<div class="skill">UI Design</div>
+Saya adalah mahasiswa informatika yang memiliki minat pada pengembangan web modern,
+UI design, dan teknologi seperti AI serta data system. Saya senang membangun aplikasi
+yang elegan, cepat, dan mudah digunakan.
+
+</div>
+
+</section>
+
+<!-- TECH STACK -->
+
+<section id="tech" class="reveal">
+
+<h2 class="section-title">Tech Stack</h2>
+
+<div class="tech-grid">
+
+<div class="tech">HTML</div>
+<div class="tech">CSS</div>
+<div class="tech">JavaScript</div>
+<div class="tech">PHP</div>
+<div class="tech">python</div>
+<div class="tech">MySQL</div>
+<div class="tech">Django</div>
+<div class="tech">VS Code</div>
+
+</div>
+
+</section>
+
+<!-- FEATURED PROJECT -->
+
+<section class="reveal">
+
+<h2 class="section-title">Featured Project</h2>
+
+<div class="featured">
+
+<img src="image/kesehatan.png">
+
+<div class="featured-content">
+
+<h3>Website Management Data Kesehatan</h3>
+
+<p>
+Aplikasi berbasis web untuk mengelola data pasien, data dokter,
+dan rekam medis menggunakan PHP dan MySQL.
+</p>
+
+<ul>
+<li>Login System</li>
+<li>Manajemen Data Pasien</li>
+<li>Rekam Medis</li>
+<li>Dashboard Admin</li>
+</ul>
+
+<a href="http://diksa-project.free.nf" class="btn" target="_blank">Live Demo</a>
+
+</div>
 
 </div>
 
@@ -380,7 +518,7 @@ Saya adalah seorang mahasiswa informatika yang memiliki minat pada pengembangan 
 
 <!-- PROJECTS -->
 
-<section id="projects">
+<section id="projects" class="reveal">
 
 <h2 class="section-title">Projects</h2>
 
@@ -390,43 +528,71 @@ Saya adalah seorang mahasiswa informatika yang memiliki minat pada pengembangan 
 
 <img src="image/kesehatan.png">
 
-<h4>Website kesehatan</h4>
+<div class="project-content">
 
-<p>Aplikasi untuk memanagement data kesehatan, yaitu data pasien, rekam madis pasien, data dokter, sehingga memudah kan pengguna untuk mengelola dan menyimpan data.</p>
+<h4>Website Kesehatan</h4>
+
+<p>Aplikasi manajemen data pasien berbasis web.</p>
 
 <div class="project-links">
+
 <a href="http://diksa-project.free.nf" target="_blank">Demo</a>
+
 </div>
 
 </div>
+
+</div>
+
+</div>
+
+<div class="projects">
 
 <div class="project">
 
-<img src="project2.jpg">
+<img src="image/perpustakaan anime.png">
 
-<h4>Dashboard Mahasiswa</h4>
+<div class="project-content">
 
-<p>Sistem dashboard akademik untuk melihat IPK, jadwal, dan data akademik.</p>
+<h4>Perpustakaan anime</h4>
 
-<div class="project-links">
-<a href="#">Demo</a>
-<a href="#">GitHub</a>
-</div>
-
-</div>
-
-<div class="project">
-
-<img src="project3.jpg">
-
-<h4>Landing Page Modern</h4>
-
-<p>Landing page modern dengan desain minimalis dan animasi elegan.</p>
+<p>Aplikasi sederhana untuk menonton anime berbasis web.</p>
 
 <div class="project-links">
-<a href="#">Demo</a>
-<a href="#">GitHub</a>
+
+<a href="https://diksaarsy.github.io/anime/" target="_blank">Demo</a>
+
 </div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- EXPERIENCE -->
+
+<section id="experience" class="reveal">
+
+<h2 class="section-title">Experience</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<h4>2025</h4>
+
+<p>Mengembangkan website management data kesehatan menggunakan HTML, CSS, JavaScript, PHP dan MySQL.</p>
+
+</div>
+
+<div class="timeline-item">
+
+<h4>2024</h4>
+
+<p>Membuat berbagai project website seperti landing page dan dashboard mahasiswa.</p>
 
 </div>
 
@@ -436,15 +602,17 @@ Saya adalah seorang mahasiswa informatika yang memiliki minat pada pengembangan 
 
 <!-- CONTACT -->
 
-<section id="contact">
+<section id="contact" class="reveal">
 
 <h2 class="section-title">Contact</h2>
 
 <div class="contact">
 
-<a href="https://mail.google.com/mail/?view=cm&to=diksaarsibadria@gmail.com" target="_blank">Email</a>
-<a href="https://github.com/diksaarsy" target="_blank">GitHub</a>
-<a href="https://wa.me/6281353656803" target="_blank">WhatsApp</a>
+<a href="https://github.com/diksaarsy">GitHub</a>
+
+<a href="https://wa.me/6281353656803">WhatsApp</a>
+
+<a href="mailto:diksaarsibadria@gmail.com">Email</a>
 
 </div>
 
@@ -452,17 +620,34 @@ Saya adalah seorang mahasiswa informatika yang memiliki minat pada pengembangan 
 
 <footer>
 
-© 2026 Portofolio Diksa Arsy Badrian
+© 2026 Diksa Arsy Badrian
 
 </footer>
 
 <script>
 
-function toggleMenu(){
-document.getElementById("menu").classList.toggle("active");
+function reveal(){
+
+let reveals=document.querySelectorAll(".reveal");
+
+for(let i=0;i<reveals.length;i++){
+
+let windowHeight=window.innerHeight;
+let elementTop=reveals[i].getBoundingClientRect().top;
+let visible=150;
+
+if(elementTop<windowHeight-visible){
+reveals[i].classList.add("active");
 }
+
+}
+
+}
+
+window.addEventListener("scroll",reveal);
 
 </script>
 
 </body>
 </html>
+```
